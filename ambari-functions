@@ -9,7 +9,7 @@ USAGE
 : ${NODE_PREFIX=amb}
 : ${AMBARI_SERVER_NAME:=${NODE_PREFIX}0}
 : ${MYDOMAIN:=mycorp.kom}
-: ${IMAGE:="sequenceiq/ambari:1.7.0-ea"}
+: ${IMAGE:="sequenceiq/ambari:1.7.0-ea-tez"}
 : ${DOCKER_OPTS:="--dns 127.0.0.1 --entrypoint /usr/local/serf/bin/start-serf-agent.sh -e KEYCHAIN=$KEYCHAIN"}
 : ${CLUSTER_SIZE:=3}
 : ${DEBUG:=1}
@@ -101,10 +101,10 @@ amb-deploy-cluster() {
   if [ $# -gt 1 ]; then
     BLUEPRINT=$2
   else
-    [ $act_cluster_size -gt 1 ] && BLUEPRINT=multi-node-hdfs-yarn || BLUEPRINT=single-node-hdfs-yarn
+    [ $act_cluster_size -gt 1 ] && BLUEPRINT=multi-node-hdfs-yarn-tez || BLUEPRINT=single-node-hdfs-yarn-tez
   fi
 
-  : ${BLUEPRINT:?" required (single-node-hdfs-yarn / multi-node-hdfs-yarn / hdp-singlenode-default / hdp-multinode-default)"}
+  : ${BLUEPRINT:?" required (single-node-hdfs-yarn-tez / multi-node-hdfs-yarn-tez / hdp-singlenode-default / hdp-multinode-default)"}
 
   amb-start-cluster $act_cluster_size
   _amb_run_shell /tmp/install-cluster.sh
