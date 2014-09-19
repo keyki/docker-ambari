@@ -1,6 +1,7 @@
 {
   "event_handlers": [
-    "member-join=/usr/local/serf/handlers/ambari-bootstrap"
+    "member-join=/usr/local/serf/handlers/ambari-bootstrap",
+    "user:copy=/usr/local/serf/handlers/tez-copy"
   ],
 
   "tags" : {

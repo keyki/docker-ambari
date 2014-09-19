@@ -1,0 +1,19 @@
+#!/bin/bash
+
+: ${DEBUG:=1}
+
+debug() {
+  [ $DEBUG -gt 0 ] && echo [DEBUG] "$@" 1>&2
+}
+
+debug copying tez jars
+
+cat >/tmp/copy.sh<<"EOF"
+#!/bin/bash
+
+su hdfs -c "/usr/bin/hadoop fs -mkdir /apps && /usr/bin/hadoop fs -put /usr/lib/tez /apps"
+EOF
+
+chmod +x /tmp/copy.sh
+
+nohup /tmp/copy.sh &
