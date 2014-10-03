@@ -26,8 +26,12 @@ RUN curl -o /tmp/ambari-shell.jar https://s3-eu-west-1.amazonaws.com/maven.seque
 ADD install-cluster.sh /tmp/
 ADD wait-for-host-number.sh /tmp/
 ADD ambari-shell.sh /tmp/
-ENV JAVA_HOME /usr/jdk64/jdk1.7.0_45
+
+#Workaround to have the proper jdk dir in the path
+RUN cd /usr/jdk64 && ln -s jdk1.7* latest
+ENV JAVA_HOME /usr/jdk64/latest
 ENV PATH $PATH:$JAVA_HOME/bin
+
 WORKDIR /tmp
 
 # fixing pgsql issue
