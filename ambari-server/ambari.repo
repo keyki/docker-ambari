@@ -1,6 +1,6 @@
-[AMBARI.1.7.0-trunk-1.x]
+[AMBARI.1.7.0-1.x]
 name=Ambari 1.x
-baseurl=http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/1.x/updates/1.7.0.trunk/
+baseurl=http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/1.x/latest/1.7.0/
 gpgcheck=1
 gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
 enabled=1
