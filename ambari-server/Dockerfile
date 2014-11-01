@@ -2,10 +2,14 @@
 FROM sequenceiq/dnsmasq:pam-fix
 MAINTAINER SequenceIQ
 
+RUN cd /usr/local && curl -LO 'http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jdk-8u25-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
+RUN mkdir /usr/jdk64 && cd /usr/local && tar -C /usr/jdk64/ -zxf jdk-8u25-linux-x64.tar.gz && rm jdk-8u25-linux-x64.tar.gz
+ENV JAVA_HOME /usr/jdk64/jdk1.8.0_25
+
 ADD ambari.repo /etc/yum.repos.d/
 RUN yum install -y ambari-server ambari-agent
 RUN yum install -y tar git curl
-RUN ambari-server setup --silent
+RUN ambari-server setup --silent --java-home=$JAVA_HOME
 
 ADD serf /usr/local/serf
 
@@ -26,7 +30,6 @@ RUN curl -o /tmp/ambari-shell.jar https://s3-eu-west-1.amazonaws.com/maven.seque
 ADD install-cluster.sh /tmp/
 ADD wait-for-host-number.sh /tmp/
 ADD ambari-shell.sh /tmp/
-ENV JAVA_HOME /usr/jdk64/jdk1.7.0_45
 ENV PATH $PATH:$JAVA_HOME/bin
 WORKDIR /tmp
 
