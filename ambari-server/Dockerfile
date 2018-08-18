@@ -1,4 +1,4 @@
-FROM keyki/docker-ambari:base
+FROM keyki/docker-ambari:systemd-base-v1
 MAINTAINER Hortonworks
 
 # add ambari repo

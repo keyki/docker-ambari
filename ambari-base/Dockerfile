@@ -9,6 +9,7 @@ STOPSIGNAL SIGRTMIN+3
 VOLUME [ "/sys/fs/cgroup" ]
 ENTRYPOINT ["/usr/sbin/init"]
 
+RUN yum install -y systemd-sysv
 RUN yum install -y yum-utils yum-plugin-ovl tar git curl bind-utils unzip wget && yum clean all
 
 # Setup sshd
