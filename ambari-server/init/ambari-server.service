@@ -14,6 +14,7 @@ KillMode=process
 GuessMainPID=no
 RemainAfterExit=yes
 Environment='AMBARI_JVM_ARGS=-XX:MaxPermSize=512m'
+Environment="USE_CONSUL_DNS=$USE_CONSUL_DNS"
 ExecStartPre=/opt/ambari-server/init-server.sh
 ExecStart=/usr/sbin/ambari-server start
 ExecStop=/usr/sbin/ambari-server stop

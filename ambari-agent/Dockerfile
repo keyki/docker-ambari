@@ -17,7 +17,7 @@ RUN sed -i "/\[agent\]/ a public_hostname_script=\/etc\/ambari-agent\/conf\/publ
 RUN sed -i "/\[agent\]/ a hostname_script=\/etc\/ambari-agent\/conf\/internal-hostname.sh" /etc/ambari-agent/conf/ambari-agent.ini
 
 # do not use the docker0 interface
-RUN sed -i "s/\"ifconfig\"/\"ifconfig eth0\"/" /usr/lib/python2.6/site-packages/ambari_agent/Facter.py
+# RUN sed -i "s/\"ifconfig\"/\"ifconfig eth0\"/" /usr/lib/python2.6/site-packages/ambari_agent/Facter.py
 
 # Add jars from packer image
 ADD dash-azure-storage-2.2.0.jar /usr/lib/hadoop/lib/

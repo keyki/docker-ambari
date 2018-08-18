@@ -47,7 +47,7 @@ reorder_dns_lookup() {
 
 main() {
   [[ "$USE_CONSUL_DNS" == "true" ]] && local_nameserver
-  ambari_server_addr
+  #ambari_server_addr
   reorder_dns_lookup
 }
 
