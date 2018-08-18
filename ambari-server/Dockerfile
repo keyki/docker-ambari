@@ -1,4 +1,4 @@
-FROM hortonworks/ambari-base:7.2-v7
+FROM keyki/docker-ambari:base
 MAINTAINER Hortonworks
 
 # add ambari repo
